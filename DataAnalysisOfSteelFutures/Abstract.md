@@ -22,3 +22,33 @@ Using the quadratic nonlinear model as a benchmark, predicted values were compar
 ##### Objective 4
 Using the quadratic nonlinear model established in Objective 2, standardization of price data was applied to high-dimensional spaces, forming a multi-item laddering curve. By setting step sizes and utilizing step-wise back-calculations, changes in actual price variations were obtained. Based on these predictions, an investment strategy was formulated: buying during high-growth periods and selling during declines, yielding a maximum return rate of **161.27%** among the strategies provided.
 
+
+
+#### Here's the problem 
+Problem B: Correlation of Futures Prices
+
+Many financial instruments exhibit intrinsic correlations. Identifying these relationships from price and volume data is an interesting challenge. For example, in the "Coal-Coke-Steel-Mining" sector on Wind, there are nine categories: rebar, iron ore, stainless steel, hot-rolled coil, ferrosilicon, coking coal, coke, silicon manganese, and wire rod. Some of these products have upstream-downstream relationships. For instance, a certain quantity of coking coal, coke, and iron ore can be used to produce rebar and other products. Exploring the relationships between different products through their prices has always been of interest to investors. Your task is to uncover the potential relationships among these products based on their daily price data.
+
+Problems
+
+1. Develop an algorithm to establish linear relationships among these products using daily price data and model these linear relationships.
+
+2. Can you identify nonlinear relationships among these products?
+
+3. These relationships are typically valid for a certain period. Can you identify a criterion to determine the valid time window for these relationships?
+
+4. Based on these relationships, construct an investment portfolio strategy.
+
+Data Sources
+
+- Rebar, Hot-Rolled Coil, Stainless Steel, Wire Rod**  
+  *(Shanghai Futures Exchange)*  
+  [Link to data](https://www.shfe.com.cn/statements/dataview.html?paramid=delaymarket_rb)
+
+- Iron Ore, Coking Coal, Coke**  
+  *(Dalian Commodity Exchange)*  
+  [Link to data](http://www.dce.com.cn/dalianshangpin/xqsj/lssj/index.html)
+
+- Silicon Manganese, Ferrosilicon**  
+  *(Zhengzhou Commodity Exchange)*  
+  [Link to data](http://www.czce.com.cn/cn/jysj/lshqxz/H770319index_1.htm)
