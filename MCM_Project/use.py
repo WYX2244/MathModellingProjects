@@ -109,7 +109,7 @@ def mtkl_result():
             [sum(df[df['num_searcher'] == i]['>0.95']) / df[df['num_searcher'] == i]['>0.95'] for i in num_searcher])
     plt.show()
     time.sleep(100)
-if __name__ == '__main__':
+def ree():
     df = pd.read_csv('ocldb1706832809.15338.csv', header=None, )
     df.columns = ['depth', 'temp', 'salt']
     df = df[~df['salt'].isna()]
@@ -123,3 +123,50 @@ if __name__ == '__main__':
     plt.ylabel('Salinity')
     plt.show()
     time.sleep(111)
+def mean_of_arrays(series):
+    a = np.asarray([[i[0] for i in series.values], [i[1] for i in series.values]])
+    return np.mean(a, axis=1)
+def re_ana1():
+    df = pd.read_excel('洋流速度.xlsx')
+    df['center'] = df['center'].apply(lambda x: [i for i in x[1:-1].split(' ') if '.' in i])
+    df['center'] = df['center'].apply(lambda x: [float(i) for i in x])
+
+    df = df.groupby(['day', 'v洋流', 'v潜艇'], as_index=False).agg({
+        'R': 'mean',  # 对普通数值列使用内置的 mean 函数
+        'center': mean_of_arrays  # 对数组列使用自定义的聚合函数
+    })
+    df['center_纬度方向(m)'] = df['center'].apply(lambda x: x[0])
+    df['center_经度方向(m)'] = df['center'].apply(lambda x: x[1])
+
+    print(df)
+    df.to_excel('11.xlsx')
+if __name__ == '__main__':
+
+
+
+
+    df=pd.read_excel('1.xlsx',index_col=0)
+    print(df)
+    df=df.drop('prob',axis=1)
+    df['>0.95']=df['>0.95'].astype(int)
+    grouped = df.groupby(['num_searcher', 'beta_extra', 'scaling'])
+
+
+    # 计算每个day的累计成功率
+    def cumulative_success_rate(group):
+        # 按day排序
+        group = group.sort_values(by='day')
+        # 计算累计成功的数量
+        group['cumulative_success'] = group['>0.95'].cumsum()
+        # 计算累计成功率
+        group['cumulative_success_rate'] = group['cumulative_success'] / len(group)
+        group=group.groupby('day').last()
+        return group
+
+
+    # 应用函数到每个分组
+    cumulative_success_df = grouped.apply(cumulative_success_rate)
+    print(cumulative_success_df)
+    cumulative_success_df.to_excel('re1.xlsx')
+
+    # 展示结果
