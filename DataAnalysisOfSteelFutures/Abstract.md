@@ -7,7 +7,6 @@ This study selects 9 types of futures—rebar, iron ore, stainless steel, hot-ro
 
 From the perspective of one of machine learning’s hottest topics—low-dimensional manifold embedding in high-dimensional spaces—the dataset used in this issue represents a low-dimensional flow within a high-dimensional space. Using the concept of potential fields and a relatively stable sliding window size, a secondary quadratic manifold embedding is proposed to determine the optimal investment strategy.
 
----
 
 #### Research Objectives
 
